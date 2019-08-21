@@ -98,10 +98,16 @@ class SubmissionAPI(APIView):
         if not submission.check_user_permission(request.user):
             return self.error("No permission for this submission")
 
-        if request.user.is_admin_role() or submission.problem.is_public == True or not submission.problem.contest:
+        # save the problem_id for downloading lately
+        temp_save = submission.problem.id
+
+        if request.user.is_admin_role() or not submission.problem.contest:
             submission_data = SubmissionModelSerializer(submission).data
         else:
             submission_data = SubmissionSafeModelSerializer(submission).data
+            # 还原
+            submission_data['problem'] = temp_save
+
         # 是否有权限取消共享
         submission_data["can_unshare"] = submission.check_user_permission(request.user, check_share=False)
         return self.success(submission_data)
