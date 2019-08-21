@@ -14,6 +14,8 @@ docker cp dist/ oj-backend:/app/
 后端：
 docker cp oj.py oj-backend:/app/submission/views/
 docker cp dispatcher.py oj-backend:/app/judge/
+docker cp  middleware.py oj-backend:/app/account/
+docker cp  admin.py oj-backend:/app/problem/views/
 重启：
 docker-compose stop
 docker-compose up -d
