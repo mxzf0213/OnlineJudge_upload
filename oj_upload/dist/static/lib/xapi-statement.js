@@ -1,9 +1,9 @@
-async function sendStatement (username,mail,verb, verbId, object, objectId) {
+async function sendStatement (username, mail, verb, verbId, object, objectId) {
   var uNamejs = username
   var uEmailjs = mail
   var conf = {
-    'endpoint': 'https://trial-lrs.yetanalytics.io/xapi/',
-    'auth': 'Basic ' + toBase64('f6c84b798c6306ea37073fa38af392e1:af407fbb06fbc543bc9a2e03533db29c')
+    'endpoint': 'http://10.24.2.37/data/xAPI/',
+    'auth': 'Basic MzhjYTRhNjEyNDY2Y2MyYzY2NGUyZGQ0NGU4YzQzNjc5ODRiYmRjMjoxYTg2NzY0ODU0ZTM0MGU4YmNhYTM5YmQ3OTY0YTVjMjJmYjFkNGQ1'
   }
   ADL.XAPIWrapper.changeConfig(conf)
   var statement = {
